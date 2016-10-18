@@ -1,0 +1,49 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to build project using make
+make
+gcc -g -fpic -c crawler.c -Wall -Werror -o crawler.o
+gcc -g -shared -o libcrawler.so crawler.o
+gcc -g -L. -lcrawler -lpthread file_tester.c -Wall -Werror -o file_tester
+gcc -g -L. -lcrawler -lpthread web_tester.c cs537.c -Wall -Werror -o web_tester
+
+
+test build PASSED
+ (build project using make)
+
+starting basic_test
+
+**********************************************************************
+
+Test basic_test
+Check if the program gives the correct output for a simple graph
+
+**********************************************************************
+/afs/cs.wisc.edu/p/course/cs537-remzi/ta/tests/4a/tests/basic_test
+Wait
+wake up
+Wait
+Wait
+Wait
+/u/c/s/cs537-1/ta/tests/4a/tests/files/num_threads/pageb is ADDED to the visited_check!
+/u/c/s/cs537-1/ta/tests/4a/tests/files/num_threads/pagec is ADDED to the visited_check!
+wake up
+wake up
+/u/c/s/cs537-1/ta/tests/4a/tests/files/num_threads/pageh is ADDED to the visited_check!
+/u/c/s/cs537-1/ta/tests/4a/tests/files/num_threads/paged is ADDED to the visited_check!
+/u/c/s/cs537-1/ta/tests/4a/tests/files/num_threads/pagee is ADDED to the visited_check!
+Failure: /afs/cs.wisc.edu/p/course/cs537-remzi/ta/tests/4a/tests/basic_test returned incorrect status code. Expected 0 got -11
+
+
+test basic_test FAILED (0 of 10)
+ (Check if the program gives the correct output for a simple graph)
+ /afs/cs.wisc.edu/p/course/cs537-remzi/ta/tests/4a/tests/basic_test returned incorrect status code. Expected 0 got -11
+
+Skipped 0 tests.
+To keep testing after failing a test, use flag '-c' or '--continue'

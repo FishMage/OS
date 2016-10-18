@@ -1,0 +1,25 @@
+#include "types.h"
+#include "user.h"
+#include "stat.h"
+#include "fs.h"
+#include "x86.h"
+#define PGSIZE 4096
+/*
+int thread_create(void (*start_routine)(void*), void *arg){
+  void* stack; 
+  stack = malloc(2*PGSIZE);
+  if((uint)stack % PGSIZE)
+    stack = stack + (PGSIZE - (uint)stack % PGSIZE);
+  return clone(start_routine, arg, stack);
+}
+
+int thread_join(void)
+{
+  void *stack;
+  int thread = join(&stack);	
+  free(stack);
+  return thread;
+}
+
+
+*/

@@ -1,0 +1,25 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to build project using make
+make
+make: Nothing to be done for `all'.
+
+
+test build PASSED
+ (build project using make)
+
+starting single_thread
+
+**********************************************************************
+
+Test single_thread
+Calling crawl with single downloader and parser thread and check if only 1 thread spawned
+
+**********************************************************************
+/afs/cs.wisc.edu/p/course/cs537-remzi/ta/tests/4a/tests/single_thread

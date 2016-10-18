@@ -1,0 +1,9 @@
+#include "param.h"
+
+struct pstat{
+	bool used;
+	int pid;
+	int pri;
+	int ticks;
+
+};

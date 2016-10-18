@@ -1,0 +1,44 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to clean project using make clean
+make clean
+rm -f fscheck
+Trying to build project using make
+make
+gcc -Wall -o fscheck fscheck.c
+
+
+test build PASSED
+ (build project using make)
+ file 'mkfs.o' exists after make clean, removing
+
+starting good
+
+**********************************************************************
+
+Test good
+run on a good filesystem
+
+**********************************************************************
+/tmp/tmpHZ3MUQ/p/./fscheck /u/c/s/cs537-1/ta/tests/.5a/images/good
+Failure: ./fscheck returned incorrect status code. Expected 0 got -11
+
+
+test good FAILED (0 of 5)
+ (run on a good filesystem)
+ ./fscheck returned incorrect status code. Expected 0 got -11
+
+ Test it yourself by running
+ fscheck /u/c/s/cs537-1/ta/tests/.5a/images/good
+ and check out the test folder
+ /u/c/s/cs537-1/ta/tests/.5a/err/good
+ to compare your error output with reference outputs. 
+
+Skipped 0 tests.
+To keep testing after failing a test, use flag '-c' or '--continue'

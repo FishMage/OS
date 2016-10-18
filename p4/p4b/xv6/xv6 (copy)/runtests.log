@@ -1,0 +1,75 @@
+starting build
+
+**********************************************************************
+
+Test build
+build xv6 using make
+
+**********************************************************************
+Trying to build project using make
+make
+make: Nothing to be done for `all'.
+
+
+test build PASSED
+ (build xv6 using make)
+
+starting join2
+
+**********************************************************************
+
+Test join2
+join argument checking
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/join2.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+rm
+ls
+usertests
+grep
+ln
+kill
+stressfs
+wc
+mkdir
+echo
+sh
+forktest
+cat
+zombie
+init
+README
+tester
+balloc: first 461 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+user/tester.c: 40 assert failed (join(join_stack) == clone_pid)
+TEST FAILED
+
+
+test join2 FAILED (0 of 6)
+ (join argument checking)
+ tester failed
+
+Skipped 0 tests.
+To keep testing after failing a test, use flag '-c' or '--continue'

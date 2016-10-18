@@ -1,0 +1,12 @@
+In PartA:
+	We use a string array called url_queue[] as the bounded queue, and a linked list called unbounded queue to store the page for the parser. We also use another linked list to check if the page is already parsed or it is new to the unbounded queue.
+	For concurrency, We use locks and CVs to make sure there is no race condition and all url can be parsed and pushed back to the url_queue.
+
+In PartB:
+	We added a new thread library called thread.c in the user/ directory and implement the lock_create, lock_acquire, and lock_release in that file. Moreover, in proc.h we added another struct called thread_t to store 3 attributes of a certain thread:
+	int thread_status: whether the proc is a thread.
+	void *stack_loc : location of the thread
+	lock_t *lock: the lock of that thread
+In proc.c where we implement clone() and join():
+	clone(): we make a new process but it share the same pgdir and we change the thread_status to 1 which means it's a thread.
+	join(): we go through the page table to find a proc which has the thread_status ==1. Then we join it to the parent proc.

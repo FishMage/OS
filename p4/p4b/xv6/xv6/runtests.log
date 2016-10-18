@@ -1,0 +1,896 @@
+starting build
+
+**********************************************************************
+
+Test build
+build xv6 using make
+
+**********************************************************************
+Trying to build project using make
+make
+make: Nothing to be done for `all'.
+
+
+test build PASSED
+ (build xv6 using make)
+
+starting clone
+
+**********************************************************************
+
+Test clone
+clone and verify that address space is shared
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/clone.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+TEST PASSED
+$ 
+
+test clone PASSED (9 of 9)
+ (clone and verify that address space is shared)
+
+starting badclone
+
+**********************************************************************
+
+Test badclone
+clone with bad stack argument
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/badclone.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+TEST PASSED
+$ 
+
+test badclone PASSED (6 of 6)
+ (clone with bad stack argument)
+
+starting join4
+
+**********************************************************************
+
+Test join4
+join, not wait, should handle threads
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/join4.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 461 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4TEST PASSED
+$ 
+
+test join4 PASSED (3 of 3)
+ (join, not wait, should handle threads)
+
+starting thread2
+
+**********************************************************************
+
+Test thread2
+memory leaks from thread library?
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/thread2.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4pid=5pid=6pid=7pid=8pid=9pid=10pid=11pid=12pid=13pid=14pid=15pid=16pid=17pid=18pid=19pid=20pid=21pid=22pid=23pid=24pid=25pid=26pid=27pid=28pid=29pid=30pid=31pid=32pid=33pid=34pid=35pid=36pid=37pid=38pid=39pid=40pid=41pid=42pid=43pid=44pid=45pid=46pid=47pid=48pid=49pid=50pid=51pid=52pid=53pid=54pid=55pid=56pid=57pid=58pid=59pid=60pid=61pid=62pid=63pid=64pid=65pid=66pid=67pid=68pid=69pid=70pid=71pid=72pid=73pid=74pid=75pid=76pid=77pid=78pid=79pid=80pid=81pid=82pid=83pid=84pid=85pid=86pid=87pid=88pid=89pid=90pid=91pid=92pid=93pid=94pid=95pid=96pid=97pid=98pid=99pid=100pid=101pid=102pid=103pid=104pid=105pid=106pid=107pid=108pid=109pid=110pid=111pid=112pid=113pid=114pid=115pid=116pid=117pid=118pid=119pid=120pid=121pid=122pid=123pid=124pid=125pid=126pid=127pid=128pid=129pid=130pid=131pid=132pid=133pid=134pid=135pid=136pid=137pid=138pid=139pid=140pid=141pid=142pid=143pid=144pid=145pid=146pid=147pid=148pid=149pid=150pid=151pid=152pid=153pid=154pid=155pid=156pid=157pid=158pid=159pid=160pid=161pid=162pid=163pid=164pid=165pid=166pid=167pid=168pid=169pid=170pid=171pid=172pid=173pid=174pid=175pid=176pid=177pid=178pid=179pid=180pid=181pid=182pid=183pid=184pid=185pid=186pid=187pid=188pid=189pid=190pid=191pid=192pid=193pid=194pid=195pid=196pid=197pid=198pid=199pid=200pid=201pid=202pid=203pid=204pid=205pid=206pid=207pid=208pid=209pid=210pid=211pid=212pid=213pid=214pid=215pid=216pid=217pid=218pid=219pid=220pid=221pid=222pid=223pid=224pid=225pid=226pid=227pid=228pid=229pid=230pid=231pid=232pid=233pid=234pid=235pid=236pid=237pid=238pid=239pid=240pid=241pid=242pid=243pid=244pid=245pid=246pid=247pid=248pid=249pid=250pid=251pid=252pid=253pid=254pid=255pid=256pid=257pid=258pid=259pid=260pid=261pid=262pid=263pid=264pid=265pid=266pid=267pid=268pid=269pid=270pid=271pid=272pid=273pid=274pid=275pid=276pid=277pid=278pid=279pid=280pid=281pid=282pid=283pid=284pid=285pid=286pid=287pid=288pid=289pid=290pid=291pid=292pid=293pid=294pid=295pid=296pid=297pid=298pid=299pid=300pid=301pid=302pid=303pid=304pid=305pid=306pid=307pid=308pid=309pid=310pid=311pid=312pid=313pid=314pid=315pid=316pid=317pid=318pid=319pid=320pid=321pid=322pid=323pid=324pid=325pid=326pid=327pid=328pid=329pid=330pid=331pid=332pid=333pid=334pid=335pid=336pid=337pid=338pid=339pid=340pid=341pid=342pid=343pid=344pid=345pid=346pid=347pid=348pid=349pid=350pid=351pid=352pid=353pid=354pid=355pid=356pid=357pid=358pid=359pid=360pid=361pid=362pid=363pid=364pid=365pid=366pid=367pid=368pid=369pid=370pid=371pid=372pid=373pid=374pid=375pid=376pid=377pid=378pid=379pid=380pid=381pid=382pid=383pid=384pid=385pid=386pid=387pid=388pid=389pid=390pid=391pid=392pid=393pid=394pid=395pid=396pid=397pid=398pid=399pid=400pid=401pid=402pid=403pid=404pid=405pid=406pid=407pid=408pid=409pid=410pid=411pid=412pid=413pid=414pid=415pid=416pid=417pid=418pid=419pid=420pid=421pid=422pid=423pid=424pid=425pid=426pid=427pid=428pid=429pid=430pid=431pid=432pid=433pid=434pid=435pid=436pid=437pid=438pid=439pid=440pid=441pid=442pid=443pid=444pid=445pid=446pid=447pid=448pid=449pid=450pid=451pid=452pid=453pid=454pid=455pid=456pid=457pid=458pid=459pid=460pid=461pid=462pid=463pid=464pid=465pid=466pid=467pid=468pid=469pid=470pid=471pid=472pid=473pid=474pid=475pid=476pid=477pid=478pid=479pid=480pid=481pid=482pid=483pid=484pid=485pid=486pid=487pid=488pid=489pid=490pid=491pid=492pid=493pid=494pid=495pid=496pid=497pid=498pid=499pid=500pid=501pid=502pid=503pid=504pid=505pid=506pid=507pid=508pid=509pid=510pid=511pid=512pid=513pid=514pid=515pid=516pid=517pid=518pid=519pid=520pid=521pid=522pid=523pid=524pid=525pid=526pid=527pid=528pid=529pid=530pid=531pid=532pid=533pid=534pid=535pid=536pid=537pid=538pid=539pid=540pid=541pid=542pid=543pid=544pid=545pid=546pid=547pid=548pid=549pid=550pid=551pid=552pid=553pid=554pid=555pid=556pid=557pid=558pid=559pid=560pid=561pid=562pid=563pid=564pid=565pid=566pid=567pid=568pid=569pid=570pid=571pid=572pid=573pid=574pid=575pid=576pid=577pid=578pid=579pid=580pid=581pid=582pid=583pid=584pid=585pid=586pid=587pid=588pid=589pid=590pid=591pid=592pid=593pid=594pid=595pid=596pid=597pid=598pid=599pid=600pid=601pid=602pid=603pid=604pid=605pid=606pid=607pid=608pid=609pid=610pid=611pid=612pid=613pid=614pid=615pid=616pid=617pid=618pid=619pid=620pid=621pid=622pid=623pid=624pid=625pid=626pid=627pid=628pid=629pid=630pid=631pid=632pid=633pid=634pid=635pid=636pid=637pid=638pid=639pid=640pid=641pid=642pid=643pid=644pid=645pid=646pid=647pid=648pid=649pid=650pid=651pid=652pid=653pid=654pid=655pid=656pid=657pid=658pid=659pid=660pid=661pid=662pid=663pid=664pid=665pid=666pid=667pid=668pid=669pid=670pid=671pid=672pid=673pid=674pid=675pid=676pid=677pid=678pid=679pid=680pid=681pid=682pid=683pid=684pid=685pid=686pid=687pid=688pid=689pid=690pid=691pid=692pid=693pid=694pid=695pid=696pid=697pid=698pid=699pid=700pid=701pid=702pid=703pid=704pid=705pid=706pid=707pid=708pid=709pid=710pid=711pid=712pid=713pid=714pid=715pid=716pid=717pid=718pid=719pid=720pid=721pid=722pid=723pid=724pid=725pid=726pid=727pid=728pid=729pid=730pid=731pid=732pid=733pid=734pid=735pid=736pid=737pid=738pid=739pid=740pid=741pid=742pid=743pid=744pid=745pid=746pid=747pid=748pid=749pid=750pid=751pid=752pid=753pid=754pid=755pid=756pid=757pid=758pid=759pid=760pid=761pid=762pid=763pid=764pid=765pid=766pid=767pid=768pid=769pid=770pid=771pid=772pid=773pid=774pid=775pid=776pid=777pid=778pid=779pid=780pid=781pid=782pid=783pid=784pid=785pid=786pid=787pid=788pid=789pid=790pid=791pid=792pid=793pid=794pid=795pid=796pid=797pid=798pid=799pid=800pid=801pid=802pid=803pid=804pid=805pid=806pid=807pid=808pid=809pid=810pid=811pid=812pid=813pid=814pid=815pid=816pid=817pid=818pid=819pid=820pid=821pid=822pid=823pid=824pid=825pid=826pid=827pid=828pid=829pid=830pid=831pid=832pid=833pid=834pid=835pid=836pid=837pid=838pid=839pid=840pid=841pid=842pid=843pid=844pid=845pid=846pid=847pid=848pid=849pid=850pid=851pid=852pid=853pid=854pid=855pid=856pid=857pid=858pid=859pid=860pid=861pid=862pid=863pid=864pid=865pid=866pid=867pid=868pid=869pid=870pid=871pid=872pid=873pid=874pid=875pid=876pid=877pid=878pid=879pid=880pid=881pid=882pid=883pid=884pid=885pid=886pid=887pid=888pid=889pid=890pid=891pid=892pid=893pid=894pid=895pid=896pid=897pid=898pid=899pid=900pid=901pid=902pid=903pid=904pid=905pid=906pid=907pid=908pid=909pid=910pid=911pid=912pid=913pid=914pid=915pid=916pid=917pid=918pid=919pid=920pid=921pid=922pid=923pid=924pid=925pid=926pid=927pid=928pid=929pid=930pid=931pid=932pid=933pid=934pid=935pid=936pid=937pid=938pid=939pid=940pid=941pid=942pid=943pid=944pid=945pid=946pid=947pid=948pid=949pid=950pid=951pid=952pid=953pid=954pid=955pid=956pid=957pid=958pid=959pid=960pid=961pid=962pid=963pid=964pid=965pid=966pid=967pid=968pid=969pid=970pid=971pid=972pid=973pid=974pid=975pid=976pid=977pid=978pid=979pid=980pid=981pid=982pid=983pid=984pid=985pid=986pid=987pid=988pid=989pid=990pid=991pid=992pid=993pid=994pid=995pid=996pid=997pid=998pid=999pid=1000pid=1001pid=1002pid=1003pid=1004pid=1005pid=1006pid=1007pid=1008pid=1009pid=1010pid=1011pid=1012pid=1013pid=1014pid=1015pid=1016pid=1017pid=1018pid=1019pid=1020pid=1021pid=1022pid=1023pid=1024pid=1025pid=1026pid=1027pid=1028pid=1029pid=1030pid=1031pid=1032pid=1033pid=1034pid=1035pid=1036pid=1037pid=1038pid=1039pid=1040pid=1041pid=1042pid=1043pid=1044pid=1045pid=1046pid=1047pid=1048pid=1049pid=1050pid=1051pid=1052pid=1053pid=1054pid=1055pid=1056pid=1057pid=1058pid=1059pid=1060pid=1061pid=1062pid=1063pid=1064pid=1065pid=1066pid=1067pid=1068pid=1069pid=1070pid=1071pid=1072pid=1073pid=1074pid=1075pid=1076pid=1077pid=1078pid=1079pid=1080pid=1081pid=1082pid=1083pid=1084pid=1085pid=1086pid=1087pid=1088pid=1089pid=1090pid=1091pid=1092pid=1093pid=1094pid=1095pid=1096pid=1097pid=1098pid=1099pid=1100pid=1101pid=1102pid=1103pid=1104pid=1105pid=1106pid=1107pid=1108pid=1109pid=1110pid=1111pid=1112pid=1113pid=1114pid=1115pid=1116pid=1117pid=1118pid=1119pid=1120pid=1121pid=1122pid=1123pid=1124pid=1125pid=1126pid=1127pid=1128pid=1129pid=1130pid=1131pid=1132pid=1133pid=1134pid=1135pid=1136pid=1137pid=1138pid=1139pid=1140pid=1141pid=1142pid=1143pid=1144pid=1145pid=1146pid=1147pid=1148pid=1149pid=1150pid=1151pid=1152pid=1153pid=1154pid=1155pid=1156pid=1157pid=1158pid=1159pid=1160pid=1161pid=1162pid=1163pid=1164pid=1165pid=1166pid=1167pid=1168pid=1169pid=1170pid=1171pid=1172pid=1173pid=1174pid=1175pid=1176pid=1177pid=1178pid=1179pid=1180pid=1181pid=1182pid=1183pid=1184pid=1185pid=1186pid=1187pid=1188pid=1189pid=1190pid=1191pid=1192pid=1193pid=1194pid=1195pid=1196pid=1197pid=1198pid=1199pid=1200pid=1201pid=1202pid=1203pid=1204pid=1205pid=1206pid=1207pid=1208pid=1209pid=1210pid=1211pid=1212pid=1213pid=1214pid=1215pid=1216pid=1217pid=1218pid=1219pid=1220pid=1221pid=1222pid=1223pid=1224pid=1225pid=1226pid=1227pid=1228pid=1229pid=1230pid=1231pid=1232pid=1233pid=1234pid=1235pid=1236pid=1237pid=1238pid=1239pid=1240pid=1241pid=1242pid=1243pid=1244pid=1245pid=1246pid=1247pid=1248pid=1249pid=1250pid=1251pid=1252pid=1253pid=1254pid=1255pid=1256pid=1257pid=1258pid=1259pid=1260pid=1261pid=1262pid=1263pid=1264pid=1265pid=1266pid=1267pid=1268pid=1269pid=1270pid=1271pid=1272pid=1273pid=1274pid=1275pid=1276pid=1277pid=1278pid=1279pid=1280pid=1281pid=1282pid=1283pid=1284pid=1285pid=1286pid=1287pid=1288pid=1289pid=1290pid=1291pid=1292pid=1293pid=1294pid=1295pid=1296pid=1297pid=1298pid=1299pid=1300pid=1301pid=1302pid=1303pid=1304pid=1305pid=1306pid=1307pid=1308pid=1309pid=1310pid=1311pid=1312pid=1313pid=1314pid=1315pid=1316pid=1317pid=1318pid=1319pid=1320pid=1321pid=1322pid=1323pid=1324pid=1325pid=1326pid=1327pid=1328pid=1329pid=1330pid=1331pid=1332pid=1333pid=1334pid=1335pid=1336pid=1337pid=1338pid=1339pid=1340pid=1341pid=1342pid=1343pid=1344pid=1345pid=1346pid=1347pid=1348pid=1349pid=1350pid=1351pid=1352pid=1353pid=1354pid=1355pid=1356pid=1357pid=1358pid=1359pid=1360pid=1361pid=1362pid=1363pid=1364pid=1365pid=1366pid=1367pid=1368pid=1369pid=1370pid=1371pid=1372pid=1373pid=1374pid=1375pid=1376pid=1377pid=1378pid=1379pid=1380pid=1381pid=1382pid=1383pid=1384pid=1385pid=1386pid=1387pid=1388pid=1389pid=1390pid=1391pid=1392pid=1393pid=1394pid=1395pid=1396pid=1397pid=1398pid=1399pid=1400pid=1401pid=1402pid=1403pid=1404pid=1405pid=1406pid=1407pid=1408pid=1409pid=1410pid=1411pid=1412pid=1413pid=1414pid=1415pid=1416pid=1417pid=1418pid=1419pid=1420pid=1421pid=1422pid=1423pid=1424pid=1425pid=1426pid=1427pid=1428pid=1429pid=1430pid=1431pid=1432pid=1433pid=1434pid=1435pid=1436pid=1437pid=1438pid=1439pid=1440pid=1441pid=1442pid=1443pid=1444pid=1445pid=1446pid=1447pid=1448pid=1449pid=1450pid=1451pid=1452pid=1453pid=1454pid=1455pid=1456pid=1457pid=1458pid=1459pid=1460pid=1461pid=1462pid=1463pid=1464pid=1465pid=1466pid=1467pid=1468pid=1469pid=1470pid=1471pid=1472pid=1473pid=1474pid=1475pid=1476pid=1477pid=1478pid=1479pid=1480pid=1481pid=1482pid=1483pid=1484pid=1485pid=1486pid=1487pid=1488pid=1489pid=1490pid=1491pid=1492pid=1493pid=1494pid=1495pid=1496pid=1497pid=1498pid=1499pid=1500pid=1501pid=1502pid=1503pid=1504pid=1505pid=1506pid=1507pid=1508pid=1509pid=1510pid=1511pid=1512pid=1513pid=1514pid=1515pid=1516pid=1517pid=1518pid=1519pid=1520pid=1521pid=1522pid=1523pid=1524pid=1525pid=1526pid=1527pid=1528pid=1529pid=1530pid=1531pid=1532pid=1533pid=1534pid=1535pid=1536pid=1537pid=1538pid=1539pid=1540pid=1541pid=1542pid=1543pid=1544pid=1545pid=1546pid=1547pid=1548pid=1549pid=1550pid=1551pid=1552pid=1553pid=1554pid=1555pid=1556pid=1557pid=1558pid=1559pid=1560pid=1561pid=1562pid=1563pid=1564pid=1565pid=1566pid=1567pid=1568pid=1569pid=1570pid=1571pid=1572pid=1573pid=1574pid=1575pid=1576pid=1577pid=1578pid=1579pid=1580pid=1581pid=1582pid=1583pid=1584pid=1585pid=1586pid=1587pid=1588pid=1589pid=1590pid=1591pid=1592pid=1593pid=1594pid=1595pid=1596pid=1597pid=1598pid=1599pid=1600pid=1601pid=1602pid=1603pid=1604pid=1605pid=1606pid=1607pid=1608pid=1609pid=1610pid=1611pid=1612pid=1613pid=1614pid=1615pid=1616pid=1617pid=1618pid=1619pid=1620pid=1621pid=1622pid=1623pid=1624pid=1625pid=1626pid=1627pid=1628pid=1629pid=1630pid=1631pid=1632pid=1633pid=1634pid=1635pid=1636pid=1637pid=1638pid=1639pid=1640pid=1641pid=1642pid=1643pid=1644pid=1645pid=1646pid=1647pid=1648pid=1649pid=1650pid=1651pid=1652pid=1653pid=1654pid=1655pid=1656pid=1657pid=1658pid=1659pid=1660pid=1661pid=1662pid=1663pid=1664pid=1665pid=1666pid=1667pid=1668pid=1669pid=1670pid=1671pid=1672pid=1673pid=1674pid=1675pid=1676pid=1677pid=1678pid=1679pid=1680pid=1681pid=1682pid=1683pid=1684pid=1685pid=1686pid=1687pid=1688pid=1689pid=1690pid=1691pid=1692pid=1693pid=1694pid=1695pid=1696pid=1697pid=1698pid=1699pid=1700pid=1701pid=1702pid=1703pid=1704pid=1705pid=1706pid=1707pid=1708pid=1709pid=1710pid=1711pid=1712pid=1713pid=1714pid=1715pid=1716pid=1717pid=1718pid=1719pid=1720pid=1721pid=1722pid=1723pid=1724pid=1725pid=1726pid=1727pid=1728pid=1729pid=1730pid=1731pid=1732pid=1733pid=1734pid=1735pid=1736pid=1737pid=1738pid=1739pid=1740pid=1741pid=1742pid=1743pid=1744pid=1745pid=1746pid=1747pid=1748pid=1749pid=1750pid=1751pid=1752pid=1753pid=1754pid=1755pid=1756pid=1757pid=1758pid=1759pid=1760pid=1761pid=1762pid=1763pid=1764pid=1765pid=1766pid=1767pid=1768pid=1769pid=1770pid=1771pid=1772pid=1773pid=1774pid=1775pid=1776pid=1777pid=1778pid=1779pid=1780pid=1781pid=1782pid=1783pid=1784pid=1785pid=1786pid=1787pid=1788pid=1789pid=1790pid=1791pid=1792pid=1793pid=1794pid=1795pid=1796pid=1797pid=1798pid=1799pid=1800pid=1801pid=1802pid=1803pid=1804pid=1805pid=1806pid=1807pid=1808pid=1809pid=1810pid=1811pid=1812pid=1813pid=1814pid=1815pid=1816pid=1817pid=1818pid=1819pid=1820pid=1821pid=1822pid=1823pid=1824pid=1825pid=1826pid=1827pid=1828pid=1829pid=1830pid=1831pid=1832pid=1833pid=1834pid=1835pid=1836pid=1837pid=1838pid=1839pid=1840pid=1841pid=1842pid=1843pid=1844pid=1845pid=1846pid=1847pid=1848pid=1849pid=1850pid=1851pid=1852pid=1853pid=1854pid=1855pid=1856pid=1857pid=1858pid=1859pid=1860pid=1861pid=1862pid=1863pid=1864pid=1865pid=1866pid=1867pid=1868pid=1869pid=1870pid=1871pid=1872pid=1873pid=1874pid=1875pid=1876pid=1877pid=1878pid=1879pid=1880pid=1881pid=1882pid=1883pid=1884pid=1885pid=1886pid=1887pid=1888pid=1889pid=1890pid=1891pid=1892pid=1893pid=1894pid=1895pid=1896pid=1897pid=1898pid=1899pid=1900pid=1901pid=1902pid=1903pid=1904pid=1905pid=1906pid=1907pid=1908pid=1909pid=1910pid=1911pid=1912pid=1913pid=1914pid=1915pid=1916pid=1917pid=1918pid=1919pid=1920pid=1921pid=1922pid=1923pid=1924pid=1925pid=1926pid=1927pid=1928pid=1929pid=1930pid=1931pid=1932pid=1933pid=1934pid=1935pid=1936pid=1937pid=1938pid=1939pid=1940pid=1941pid=1942pid=1943pid=1944pid=1945pid=1946pid=1947pid=1948pid=1949pid=1950pid=1951pid=1952pid=1953pid=1954pid=1955pid=1956pid=1957pid=1958pid=1959pid=1960pid=1961pid=1962pid=1963pid=1964pid=1965pid=1966pid=1967pid=1968pid=1969pid=1970pid=1971pid=1972pid=1973pid=1974pid=1975pid=1976pid=1977pid=1978pid=1979pid=1980pid=1981pid=1982pid=1983pid=1984pid=1985pid=1986pid=1987pid=1988pid=1989pid=1990pid=1991pid=1992pid=1993pid=1994pid=1995pid=1996pid=1997pid=1998pid=1999pid=2000pid=2001pid=2002pid=2003TEST PASSED
+
+
+test thread2 PASSED (7 of 7)
+ (memory leaks from thread library?)
+
+starting join3
+
+**********************************************************************
+
+Test join3
+join should not handle child processes (forked)
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/join3.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 459 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+TEST PASSED
+zombie!
+$ 
+
+test join3 PASSED (3 of 3)
+ (join should not handle child processes (forked))
+
+starting join2
+
+**********************************************************************
+
+Test join2
+join argument checking
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/join2.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 461 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4TEST PASSED
+$ 
+
+test join2 PASSED (6 of 6)
+ (join argument checking)
+
+starting clone3
+
+**********************************************************************
+
+Test clone3
+clone copies file descriptors, but doesn't share
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/clone3.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 461 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+TEST PASSED
+$ 
+
+test clone3 PASSED (3 of 3)
+ (clone copies file descriptors, but doesn't share)
+
+starting clone2
+
+**********************************************************************
+
+Test clone2
+clone and play with the argument
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/clone2.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+TEST PASSED
+$ 
+
+test clone2 PASSED (6 of 6)
+ (clone and play with the argument)
+
+starting stack
+
+**********************************************************************
+
+Test stack
+set up stack correctly (and without extra items)
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/stack.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+TEST PASSED
+$ 
+
+test stack PASSED (8 of 8)
+ (set up stack correctly (and without extra items))
+
+starting size
+
+**********************************************************************
+
+Test size
+check that address space size is updated in threads
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/size.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 462 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4pid=5pid=6pid=7pid=8pid=9pid=10pid=11pid=12pid=13pid=14pid=15pid=16pid=17pid=18pid=19pid=20pid=21pid=22pid=23pid=24pid=25pid=26pid=27pid=28pid=29pid=30pid=31pid=32pid=33TEST PASSED
+$ 
+
+test size PASSED (7 of 7)
+ (check that address space size is updated in threads)
+
+starting multi
+
+**********************************************************************
+
+Test multi
+multiple threads with some depth of function calls
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/multi.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 462 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4pid=5pid=6pid=7pid=8pid=9pid=10pid=11pid=12pid=13pid=14pid=15pid=16pid=17pid=18pid=19pid=20pid=21pid=22pid=23pid=24pid=25pid=26pid=27pid=28pid=29pid=30pid=31pid=32pid=33TEST PASSED
+$ 
+
+test multi PASSED (8 of 8)
+ (multiple threads with some depth of function calls)
+
+starting noexit
+
+**********************************************************************
+
+Test noexit
+no exit call in thread, should trap at bogus address
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/noexit.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid 4 tester: trap 14 err 5 on cpu 1 eip 0xffffffff addr 0xffffffff--kill proc
+pid=4TEST PASSED
+$ 
+
+test noexit PASSED (7 of 7)
+ (no exit call in thread, should trap at bogus address)
+
+starting join
+
+**********************************************************************
+
+Test join
+clone and join syscalls
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/join.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 461 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4TEST PASSED
+
+
+test join PASSED (9 of 9)
+ (clone and join syscalls)
+
+starting thread
+
+**********************************************************************
+
+Test thread
+thread user library functions
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/thread.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 460 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4TEST PASSED
+
+
+test thread PASSED (10 of 10)
+ (thread user library functions)
+
+starting locks
+
+**********************************************************************
+
+Test locks
+test lock correctness
+
+**********************************************************************
+Running xv6 user progam /u/c/s/cs537-1/ta/tests/4b/tests/locks.c
+Trying to build project using make
+make
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
+		-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
+gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
+ld  -m    elf_i386 -nostdlib --omagic --entry=main --section-start=.text=0x0 --output=user/bin/tester user/tester.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+cp user/bin/tester fs/tester
+./tools/mkfs fs.img fs
+used 29 (bit 1 ninode 26) free 29 total 1024
+ls
+forktest
+sh
+kill
+grep
+init
+rm
+ln
+echo
+stressfs
+README
+wc
+tester
+zombie
+cat
+usertests
+mkdir
+balloc: first 461 blocks have been allocated
+balloc: write bitmap block at sector 28
+rm user/bin/tester
+make qemu-nox 
+Ctrl+a h for help
+/u/c/s/cs537-2/ta/tools/qemu -nographic -hdb fs.img xv6.img -smp 2
+Could not open option rom 'sgabios.bin': No such file or directory
+xv6...
+lapicinit: 1 0xfee00000
+cpu1: starting
+cpu0: starting
+init: starting sh
+$ tester
+tester
+pid=4pid=5pid=6pid=7pid=8pid=9pid=10pid=11pid=12pid=13pid=14pid=15pid=16pid=17pid=18pid=19pid=20pid=21pid=22pid=23pid=24pid=25pid=26pid=27pid=28pid=29pid=30pid=31pid=32pid=33TEST PASSED
+$ 
+
+test locks PASSED (8 of 8)
+ (test lock correctness)
+
+**********************************************************************
+Summary:
+test build PASSED
+ (build xv6 using make)
+
+test clone PASSED (9 of 9)
+ (clone and verify that address space is shared)
+
+test badclone PASSED (6 of 6)
+ (clone with bad stack argument)
+
+test join4 PASSED (3 of 3)
+ (join, not wait, should handle threads)
+
+test thread2 PASSED (7 of 7)
+ (memory leaks from thread library?)
+
+test join3 PASSED (3 of 3)
+ (join should not handle child processes (forked))
+
+test join2 PASSED (6 of 6)
+ (join argument checking)
+
+test clone3 PASSED (3 of 3)
+ (clone copies file descriptors, but doesn't share)
+
+test clone2 PASSED (6 of 6)
+ (clone and play with the argument)
+
+test stack PASSED (8 of 8)
+ (set up stack correctly (and without extra items))
+
+test size PASSED (7 of 7)
+ (check that address space size is updated in threads)
+
+test multi PASSED (8 of 8)
+ (multiple threads with some depth of function calls)
+
+test noexit PASSED (7 of 7)
+ (no exit call in thread, should trap at bogus address)
+
+test join PASSED (9 of 9)
+ (clone and join syscalls)
+
+test thread PASSED (10 of 10)
+ (thread user library functions)
+
+test locks PASSED (8 of 8)
+ (test lock correctness)
+
+Passed 16 of 16 tests.
+Overall 16 of 16
+Points 100 of 100
